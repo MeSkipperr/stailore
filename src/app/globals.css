@@ -1,55 +1,68 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary : #FFF5F2;
-  --color-secondary : #F5BABB;
-  --color-text :#064232;
+    --color-primary: #FFF5F2;
+    --color-secondary: #F5BABB;
+    --color-text: #064232;
 
-  --color-accent : #87A665;
-  --color-accent-hover : #546f39;
-}
-
-@font-face {
-  font-family: "LaObrige";
-  src: url("/font/LaObrige.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+    --color-accent: #87A665;
+    --color-accent-hover: #546f39;
 }
 
 @font-face {
-  font-family: "Kaftanl";
-  src: url("/font/kaftanl.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "LaObrige";
+    src: url("/font/LaObrige.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("/font/Montserrat-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Kaftanl";
+    src: url("/font/kaftanl.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-  font-family: "Montserrat-Bold";
-  src: url("/font/Montserrat-Medium.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
+    font-family: "Montserrat";
+    src: url("/font/Montserrat-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  scroll-behavior: smooth;
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url("/font/Montserrat-Medium.ttf") format("truetype");
+    font-weight: bolder;
+    font-style: normal;
 }
 
-.bold-text{
-  font-family: "Montserrat-Bold", sans-serif;
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+        scroll-behavior: smooth;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    html, body {
+        -ms-overflow-style: none;  /* IE dan Edge */
+        scrollbar-width: none;     /* Firefox */
+    }
+
 }
-.text-kaftan{
-  font-family: "Kaftanl", sans-serif;
+
+.bold-text {
+    font-family: "Montserrat-Bold", sans-serif;
 }
-.text-laobrige{
-  font-family: "LaObrige", serif;
+
+.text-kaftan, h1 {
+    font-family: "Kaftanl", sans-serif;
+}
+
+.text-laobrige {
+    font-family: "LaObrige", serif;
 }
