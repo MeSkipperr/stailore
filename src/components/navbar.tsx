@@ -103,7 +103,7 @@ const Navbar = () => {
       </ul>
       <ul>
         <li className="hidden sm:block">
-          <button className="bg-text  tracking-wide rounded-full text-white text-sm px-4 py-2 flex items-center">
+          <button className="bg-text  tracking-wide rounded-full text-white text-sm px-6 py-3 flex items-center">
             <HoverText>Bring to Home</HoverText>
           </button>
         </li>

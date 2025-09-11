@@ -1,9 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "@studio-freight/lenis";
 
-export default function SmoothScroll() {
+interface SmoothScrollProps {
+    children: ReactNode;
+}
+
+export default function SmoothScroll({ children }: SmoothScrollProps) {
     const pathname = usePathname();
     const [enabled, setEnabled] = useState(true);
 
@@ -20,11 +24,12 @@ export default function SmoothScroll() {
     }, [pathname]);
 
     useEffect(() => {
-        if (!enabled) return; 
+        if (!enabled) return;
 
         const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            lerp: 0.1,       
+            duration: 1.5,   
+            smoothWheel: true
         });
 
         function raf(time: number) {
@@ -39,5 +44,5 @@ export default function SmoothScroll() {
         };
     }, [enabled]);
 
-    return null;
+    return <>{children}</>;
 }

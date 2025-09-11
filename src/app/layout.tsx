@@ -17,9 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en" >
       <body className="bg-primary text-text w-full flex flex-col justify-center  ">
-        <SmoothScroll />
-        <Navbar />
-        {children}
+        <SmoothScroll>
+          <Navbar />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
