@@ -1,6 +1,7 @@
 import ImageScroll from "@/components/animation/image-scrool";
 import Reveal from "@/components/animation/reveal";
 import ScrollReveal from "@/components/animation/ScrollReveal";
+import Footer from "@/components/footer";
 import HeroImage from "@/components/hero/hero-image";
 import HomePageAnimation from "@/components/hero/homepage-animation";
 import ImageSlider from "@/components/hero/image-slider";
@@ -9,18 +10,17 @@ import HoverText from "@/components/hover-text";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 
-import { RiDoubleQuotesL } from "react-icons/ri";
 
 export default function Home() {
 
   return (
     <main className="w-full flex flex-col justify-center items-center">
       <HomePageAnimation />
-      <div className="w-full  sticky top-0 z-50 ">
-        <div className="w-full h-[45dvh] sm:h-[45dvh]"></div>
-        <div className="w-full z-50   flex flex-col justify-center items-center relative">
+      <div className="w-full  sticky top-0 z-50 pointer-events-none">
+        <div className="w-full h-[45dvh] sm:h-[45dvh] "></div>
+        <div className="w-full z-50   flex flex-col justify-center items-center relative pointer-events-auto">
           <HeroImage />
-          <div className="bg-primary w-full h-dvh flex justify-center items-center  flex-col  relative ">
+          <div className="bg-primary w-full h-dvh flex justify-center items-center  flex-col  relative   ">
             <div className="absolute inset-0  flex justify-center items-center flex-col my-40">
               <Reveal className="w-3/4 h-1/2 flex justify-between items-start">
                 <ImageScroll
@@ -66,7 +66,7 @@ export default function Home() {
               </Reveal>
             </div>
           </div>
-          <div className="w-full flex flex-col bg-primary justify-center items-center ">
+          <div className="w-full flex flex-col bg-primary justify-center items-center rounded-b-3xl">
             <div className="w-full  flex justify-center items-center space-x-4 my-40 ">
               <div className="w-full h-px bg-text opacity-60"></div>
               <Image
@@ -104,18 +104,12 @@ export default function Home() {
 
 
             <ImageSlider />
-            <div className="w-3/4 my-20 flex items-center justify-start gap-8">
-              <div className="flex gap-2 w-1/2 h-full flex-col justify-center  ">
-                <Reveal  as="span" className="bold-text text-xl text-secondary opacity-60">Testimonials</Reveal>
-                <Reveal  as="h1" className="text-7xl">Winning</Reveal>
-                <Reveal  as="h1" className="text-7xl">hearts and trust</Reveal>
-                <Reveal  as="p" className="w-full text-justify text-lg">Real stories from those who’ve made our accessories part of their day.</Reveal>
-              </div>
+            <div className="w-3/4 h-[70dvh] flex items-center justify-start gap-8">
               <div className="h-full w-1/2   relative flex flex-col justify-center gap-8">
                 <ScrollReveal
                   rangeY={[50, -50]}
-                  rangeX={[30, -30]}
-                  className="w-2/3 shadow-[0_3px_10px_rgb(0,0,0,0.2)] ml-auto flex items-center rounded-2xl gap-2 bg-secondary/75 "
+                  rangeX={[-30, 30]}
+                  className="w-2/3 shadow-[0_3px_10px_rgb(0,0,0,0.2)] flex items-center rounded-2xl gap-2 bg-secondary/75 "
                 >
                   <div className="w-full h-full flex justify-center items-start flex-col gap-2 py-4 px-2 bg-primary ml-4 pr-6 rounded-r-2xl ">
                     <span className="bold-text w-full flex items-center justify-between text-lg">
@@ -133,7 +127,7 @@ export default function Home() {
                 </ScrollReveal>
                 <ScrollReveal
                   rangeY={[50, -50]}
-                  rangeX={[-200, -170]}
+                  rangeX={[30, -30]}
                   className="w-2/3  shadow-[0_3px_10px_rgb(0,0,0,0.2)] ml-auto flex items-center rounded-2xl gap-2 bg-secondary"
                 >
                   <div className="w-full h-full flex justify-center items-start flex-col gap-2 py-4 px-2 bg-primary ml-4 pr-6 rounded-r-2xl ">
@@ -152,8 +146,8 @@ export default function Home() {
                 </ScrollReveal>
                 <ScrollReveal
                   rangeY={[50, -50]}
-                  rangeX={[30, -30]}
-                  className="w-4/6 shadow-[0_3px_10px_rgb(0,0,0,0.2)] ml-auto flex items-center justify-start rounded-2xl gap-2 bg-secondary/35"
+                  rangeX={[-30, 30]}
+                  className="w-4/6 shadow-[0_3px_10px_rgb(0,0,0,0.2)] flex items-center justify-start rounded-2xl gap-2 bg-secondary/35"
                 >
                   <div className="w-full h-full flex justify-center items-start flex-col gap-2 py-4 px-2 bg-primary ml-4 pr-6 rounded-r-2xl ">
                     <span className="bold-text w-full flex items-center justify-between text-lg">
@@ -170,18 +164,24 @@ export default function Home() {
                   </div>
                 </ScrollReveal>
               </div>
+              <div className="flex gap-2 w-1/2 h-full flex-col justify-center items-start  ">
+                <ScrollReveal rangeY={[50, -50]} as="span" className="bold-text text-xl text-secondary opacity-60 ">Testimonials</ScrollReveal>
+                <ScrollReveal rangeY={[50, -50]} as="h1" className="text-7xl">Winning</ScrollReveal>
+                <ScrollReveal rangeY={[50, -50]} as="h1" className="text-7xl">hearts and trust</ScrollReveal>
+                <ScrollReveal rangeY={[50, -50]} as="p" className="w-full text-justify text-lg">Real stories from those who’ve made our accessories part of their day.</ScrollReveal>
+              </div>
             </div>
-
-
+            <Footer />
           </div>
-
         </div>
         <div className="w-full h-[30dvh]"></div>
       </div>
-      <div className="w-full h-dvh  flex flex-col justify-between top-0 fixed">
+      <div className="w-full h-dvh  flex flex-col justify-between top-0 fixed ">
         <HeroText />
-        <div className="w-full h-[30dvh] ">
-          <h1>JAYA</h1>
+        <div className="w-full h-[30dvh] bg-primary flex justify-center items-end relative">
+          <div   className="w-full text-text  h-1/12 flex justify-center items-center text-[28rem] ">
+            <h1>Stailore</h1>
+          </div>
         </div>
       </div>
     </main>
