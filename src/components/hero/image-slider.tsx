@@ -95,15 +95,15 @@ export default function ImageSlider() {
                     {imageData.map((card, i) => (
                         <SwiperSlide
                             key={"card-image-slider-" + i}
-                            className="!w-[60%] h-full"
+                            className="!w-[70%] lg:!w-[60%] h-full"
                         >
                             <div
                                 onClick={() => {
                                     setIndex((prev) => (i + imageData.length) % imageData.length);
                                 }}
-                                className="text-white transition-all duration-500 p-6 rounded-2xl h-full flex flex-col justify-center items-center">
-                                <p>{card.subtitle}</p>
-                                <h1 className="text-8xl font-bold">{card.title}</h1>
+                                className="w-full gap-2 text-white transition-all duration-500 p-6 rounded-2xl h-full flex flex-col justify-center items-center">
+                                <p className="text-sm text-center lg:text-base">{card.subtitle}</p>
+                                <h1 className="text-5xl text-center lg:text-8xl font-bold">{card.title}</h1>
                             </div>
                         </SwiperSlide>
                     ))}
@@ -119,10 +119,12 @@ export default function ImageSlider() {
                     className="object-contain filter invert"
                 />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 h-[25%] flex justify-center items-center text-white gap-2 opacity-70">
-                <span>{index + 1}</span>
-                <div className="w-[10%] h-[2px] rounded-full  bg-white op1acity-60"></div>
-                <span>{imageData.length}</span>
+            <div className="absolute bottom-0 left-0 right-0 h-[25%] flex flex-col justify-center items-center text-white gap-2 opacity-70">
+                <div className="w-1/2 lg:w-1/6 flex justify-center items-center gap-2">
+                    <span>{index + 1}</span>
+                    <div className="w-full h-[2px] rounded-full  bg-white op1acity-60"></div>
+                    <span>{imageData.length}</span>
+                </div>
             </div>
         </div>
     );

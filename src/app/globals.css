@@ -76,3 +76,13 @@ h1 {
 .swiper-wrapper {
     transition-timing-function: cubic-bezier(0.85, 0.09, 0.15, 0.91) !important;
 }
+
+a:hover {
+    text-decoration: none;
+    color: var(--color-accent-hover);
+    transition: color 0.3s ease;
+}
+
+::selection {
+    background: rgb(from var(--color-secondary) r g b / 0.5);
+}

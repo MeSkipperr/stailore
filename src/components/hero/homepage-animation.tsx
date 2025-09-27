@@ -12,7 +12,7 @@ const HomePageAnimation = () => {
                 height: { delay: 5, duration: 1 },
                 opacity: { delay: 4.5, duration: 0.5 },
             }}
-            className="absolute top-0 h-dvh left-0 right-0 z-50 flex justify-center items-center text-9xl bg-primary "
+            className="absolute top-0 h-dvh left-0 right-0 z-50 flex justify-center items-center text-4xl bg-primary "
         >
             <motion.div
                 initial={{ y: 0 }}
@@ -34,7 +34,7 @@ const HomePageAnimation = () => {
                     alt="Stailore Logo"
                     width={200}
                     height={200}
-                    className="object-contain"
+                    className="object-contain size-1/3 lg:size-auto"
                 />
             </motion.div>
         </motion.div>

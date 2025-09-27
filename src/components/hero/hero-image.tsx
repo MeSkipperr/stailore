@@ -5,24 +5,27 @@ import HoverText from "../hover-text";
 const MotionImage = motion(Image);
 
 const HeroImage = () => {
-    const { scrollYProgress ,scrollY} = useScroll();
+    const { scrollYProgress, scrollY } = useScroll();
 
-    const y1 = useTransform(scrollY, [0, 500], [1, -50]); 
+    const y1 = useTransform(scrollY, [0, 500], [1, -50]);
     const scale = useTransform(scrollYProgress, [0, 1], [1, 1]);
     return (
-        <motion.div 
-        initial={{ backgroundColor: "rgba(255, 255, 255, 0)" }}
-        animate={{ backgroundColor: "#FFF5F2" }}
-        transition={{
-            delay: 3,
-        }}
-        className="w-[100%]  h-[80dvh] sm:h-dvh flex justify-center items-start relative overflow-hidden">
+        <motion.div
+            initial={{ backgroundColor: "rgba(255, 255, 255, 0)" }}
+            animate={{ backgroundColor: "#FFF5F2" }}
+            transition={{
+                delay: 3,
+            }}
+            className="w-[100%]  h-[80dvh] sm:h-dvh flex justify-center items-start relative overflow-hidden">
             <div className="w-[95%] sm:w-[90%] rounded-2xl h-full flex justify-center items-start relative overflow-hidden">
                 <div className="w-full h-full inset-0 z-10 flex justify-center items-center ">
                     <div className="w-full h-2/4  flex justify-center items-end">
-                        <motion.button 
-                        style={{ y: y1 }}
-                        className="bg-secondary rounded-full text-white text-sm px-6 py-3 flex items-center">
+                        <motion.button
+                            style={{ y: y1 }}
+                            initial={{ opacity: 0, pointerEvents: "none" }} 
+                            animate={{ opacity: 1, pointerEvents: "auto" }}
+                            transition={{ delay: 4, duration: 1 }}
+                            className="bg-secondary rounded-full text-white text-sm px-6 py-3 flex items-center">
                             <HoverText>Explore More</HoverText>
                         </motion.button>
                     </div>
@@ -30,7 +33,7 @@ const HeroImage = () => {
                 <MotionImage
                     width={1920}
                     height={1080}
-                    initial={{ "--maskW": "25%", "--maskH": 0 }}
+                    initial={{ "--maskW": "35%", "--maskH": 0 }}
                     animate={{ "--maskW": "100%", "--maskH": "100dvh" }}
                     transition={{
                         "--maskH": {

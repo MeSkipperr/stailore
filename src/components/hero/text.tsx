@@ -20,7 +20,7 @@ const HeroText = () => {
     const y1 = useTransform(scrollY, [0, 500], [0, -100]); 
 
     return (
-        <div className="w-full h-[30dvh] sm:h-[45dvh] flex flex-col justify-end items-center">
+        <div className="w-full h-[40dvh] sm:h-[45dvh] flex flex-col justify-end items-center">
             <motion.div
                 style={{ y: y1 }}
             
@@ -63,7 +63,7 @@ const HeroText = () => {
                             duration: 0.8
                         }
                     }}
-                    className="text-7xl sm:text-9xl ">
+                    className="text-[4rem] sm:text-9xl ">
                     the Details
                 </motion.h1>
             </motion.div>
