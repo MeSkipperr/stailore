@@ -57,15 +57,15 @@ const Navbar = () => {
   }, [pathname]);
 
   // disable scroll saat mobile menu terbuka
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-      document.documentElement.style.overflow = "auto";
-    }
-  }, [menuOpen]);
+  // useEffect(() => {
+  //   if (menuOpen) {
+  //     document.body.style.overflow = "hidden";
+  //     document.documentElement.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //     document.documentElement.style.overflow = "auto";
+  //   }
+  // }, [menuOpen]);
 
   const getDelay = () => {
     if (pathname === "/") return 4.5;
@@ -180,6 +180,7 @@ const Navbar = () => {
             </li>
             <li className="w-full flex justify-between items-center group">
               <Link href="/about"
+              onClick={() => setMenuOpen(false)}
                 className="text-6xl text-kaftan" >
                 About
               </Link>
@@ -187,6 +188,7 @@ const Navbar = () => {
             </li>
             <li className="w-full flex justify-between items-center group">
               <Link href="/fabric"
+              onClick={() => setMenuOpen(false)}
                 className="text-6xl text-kaftan" >
                 Fabric
               </Link>
@@ -204,17 +206,20 @@ const Navbar = () => {
               </a>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/">
+              <Link href="/"
+              onClick={() => setMenuOpen(false)}>
                 About
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/">
+              <Link href="/"
+              onClick={() => setMenuOpen(false)}>
                 Fabric
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/">
+              <Link href="/"
+              onClick={() => setMenuOpen(false)}>
                 Product
               </Link>
             </li>
@@ -222,12 +227,14 @@ const Navbar = () => {
           <ul className="flex flex-col gap-1">
             <h3 className="font-bold text-lg lg:text-xl ">Follow Us</h3>
             <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/">
+              <Link href="/"
+              onClick={() => setMenuOpen(false)}>
                 Instagram
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/">
+              <Link href="/"
+              onClick={() => setMenuOpen(false)}>
                 Email
               </Link>
             </li>
@@ -235,22 +242,26 @@ const Navbar = () => {
           <ul className="flex flex-col gap-1">
             <h3 className="font-bold text-lg lg:text-xl ">Information</h3>
             <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/">
+              <Link href="/"
+              onClick={() => setMenuOpen(false)}>
                 Terms & Conditions
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/">
+              <Link href="/"
+              onClick={() => setMenuOpen(false)}>
                 Privacy Policy
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/">
+              <Link href="/"
+              onClick={() => setMenuOpen(false)}>
                 How to Order
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/">
+              <Link href="/"
+              onClick={() => setMenuOpen(false)}>
                 Shipping & Returns
               </Link>
             </li>
