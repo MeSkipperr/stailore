@@ -2,6 +2,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "@studio-freight/lenis";
+import { deniedPath } from "@/config/smooth-scrool";
 
 interface SmoothScrollProps {
     children: ReactNode;
@@ -24,7 +25,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     }, [pathname]);
 
     useEffect(() => {
-        if (!enabled) return;
+        if (!enabled || deniedPath.includes(pathname)) return;
 
         const lenis = new Lenis({
             lerp: 0.1,       
