@@ -12,14 +12,18 @@ import { useLocalStorageState } from "@/utils/useLocalStorage";
 const Cart = () => {
     const [showDetail, setShowDetail] = useState(false);
     const [cart, setCart, cartActions] = useLocalStorageState<CartItem[]>("cart", []);
-    const [grandTotal, setGrandTotal] = useState(0); // ⬅️ jangan langsung hitung di SSR
+    const [grandTotal, setGrandTotal] = useState(0);
+    const [isVisible, setIsVisible] = useState(false); // ⬅️ untuk kendali animasi keluar
 
-    // ✅ Hitung total harga setelah cart ter-load di client
+    // Hitung total harga & tampilkan cart saat data ada
     useEffect(() => {
         if (cart && cart.length > 0) {
             setGrandTotal(cart.reduce((sum, item) => sum + item.totalPriceIDR, 0));
-        }else{
-            setShowDetail(false)
+            setIsVisible(true); // munculkan cart
+        } else {
+            // sembunyikan setelah animasi keluar
+            setShowDetail(false);
+            setTimeout(() => setIsVisible(false), 700); // sesuai durasi animasi exit
         }
     }, [cart]);
 
@@ -29,17 +33,17 @@ const Cart = () => {
     ) => {
         const newQty = typeof value === "function" ? value(item.quantity) : value;
         const newTotal = item.priceIDR * newQty;
-
         cartActions.updateItem("id", item.id, {
             quantity: newQty,
             totalPriceIDR: newTotal,
         });
     };
+
     const handleDeleteItem = (id: string) => {
-        cartActions.deleteItem("id", id); 
+        cartActions.deleteItem("id", id);
     };
-    // 🚫 Hindari render cart sebelum data client siap
-    if (!cart || cart.length === 0) return null;
+
+    if (!isVisible) return null; // baru hilang setelah animasi selesai
 
     return (
         <div className="fixed inset-0 flex flex-col justify-center items-center pointer-events-none z-50">
@@ -77,7 +81,7 @@ const Cart = () => {
                                                 type={item.typeName}
                                                 price={item.priceIDR}
                                                 quantity={item.quantity}
-                                                deleteHandler={()=>handleDeleteItem(item.id)}
+                                                deleteHandler={() => handleDeleteItem(item.id)}
                                                 setQuantity={(value) => handleQuantityChange(value, item)}
                                                 currency="IDR"
                                             />
@@ -90,6 +94,7 @@ const Cart = () => {
                 )}
 
                 <motion.div
+                    key="cart-summary"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
