@@ -1,0 +1,1 @@
+export const BASE_RATE_CURRENCY = 15500;

@@ -11,6 +11,7 @@ interface CartTableItemProps {
     setQuantity: React.Dispatch<React.SetStateAction<number>>;
     currency?: "USD" | "IDR";
     className?: string;
+    deleteHandler?: () => void;
 }
 
 const CartTableItem: React.FC<CartTableItemProps> = ({
@@ -22,14 +23,15 @@ const CartTableItem: React.FC<CartTableItemProps> = ({
     setQuantity,
     currency = "USD",
     className = "",
+    deleteHandler
 }) => {
     const total = price * quantity;
 
     return (
-        <tr className={`border-b border-text/20 ${className}`}>
+        <tr className={` border-b border-text/20 ${className}`}>
             {/* Product detail */}
-            <td className="flex items- gap-4 py-3">
-                <div className="size-32 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
+            <td className="flex  gap-4 py-3">
+                <div className="rounded-xl size-32 bg-gray-100  overflow-hidden flex items-center justify-center">
 
                 </div>
                 <div className="flex flex-col h-full j">
@@ -39,21 +41,22 @@ const CartTableItem: React.FC<CartTableItemProps> = ({
             </td>
 
             {/* Quantity */}
-            <td className="text-center  ">
-                    <QuantityInput
-                        state={quantity}
-                        setState={setQuantity}
-                        add={1}
-                        className="border border-text rounded-full h-8 m-auto"
-                    />
+            <td className="  ">
+                <QuantityInput
+                    deleteHandler={deleteHandler}
+                    state={quantity}
+                    setState={setQuantity}
+                    add={1}
+                    className="border border-text rounded-full h-8 m-auto "
+                />
             </td>
 
             {/* Price */}
-            <td className="text-center  ">
+            <td className="  h-full ">
                 <PriceDisplay
                     amount={price}
                     currency={currency}
-                    className="font-semibold text-sm  w-full flex justify-center"
+                    className=" text-base  w-full flex justify-center "
                 />
             </td>
 
@@ -62,7 +65,7 @@ const CartTableItem: React.FC<CartTableItemProps> = ({
                 <PriceDisplay
                     amount={total}
                     currency={currency}
-                    className="font-bold text-sm  w-full flex justify-center"
+                    className=" text-base  w-full flex justify-center"
                 />
             </td>
         </tr>

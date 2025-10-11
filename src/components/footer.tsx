@@ -28,7 +28,7 @@ const Footer = () => {
             <div className="w-full lg:w-3/4 min-h-[50dvh] py-20 flex flex-col items-center justify-center gap-12">
                 <div className="w-full  flex items-center flex-col lg:flex-row gap-8 lg:gap-0">
                     <div className="w-full px-4  lg:w-1/2 h-full flex flex-col justify-start items-start">
-                        <h1 className="text-5xl lg:text-7xl">Every Knot</h1>
+                        <h1 className="text-5xl lg:text-7xl">Every Stitch</h1>
                         <h1 className="text-5xl lg:text-7xl">Has a Story 🌸</h1>
                     </div>
                     <div className="w-full px-4 lg:w-1/2 h-full flex justify-between items-start gap-8">

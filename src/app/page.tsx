@@ -7,7 +7,7 @@ import HomePageAnimation from "@/components/hero/homepage-animation";
 import ImageSlider from "@/components/hero/image-slider";
 import HeroText from "@/components/hero/text";
 import HoverText from "@/components/hover-text";
-import Image from "next/image";
+import LineLogo from "@/components/line-logo";
 import { FaStar } from "react-icons/fa";
 
 
@@ -67,17 +67,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full flex flex-col bg-primary justify-center items-center rounded-b-3xl">
-            <div className="w-full  flex justify-center items-center space-x-4 my-20 lg:my-40 ">
-              <div className="w-full h-px bg-text opacity-60"></div>
-              <Image
-                src="/assets/logo/stailore-latter-logo-dark-green.png"
-                alt="Stailore Logo"
-                width={50}
-                height={50}
-                className="object-contain"
-              />
-              <div className="w-full h-px bg-text opacity-60"></div>
-            </div>
+            <LineLogo className="my-20 lg:my-40"/>
 
             <div className="w-full px-4 lg:w-3/4  lg:h-[75dvh]  flex lg:flex-row flex-col justify-start items-center lg:gap-20">
               <div className=" lg:h-full w-full lg:w-1/2  flex justify-center items-center overflow-hidden">

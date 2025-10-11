@@ -1,10 +1,15 @@
+import React from "react";
+import { CiTrash } from "react-icons/ci";
+
 interface QuantityInputProps {
     className?: string; // untuk mengubah tampilan UI
     state: number; // nilai quantity
-    setState: React.Dispatch<React.SetStateAction<number>>; // fungsi untuk mengubah state
+    setState: (value: number | ((prev: number) => number)) => void;// fungsi untuk mengubah state
     add?: number; // jumlah yang ditambahkan/dikurangi per klik, default 1
     min?: number; // batas minimum, default 1
     max?: number; // batas maksimum, default Infinity
+    disabled?: boolean; // menonaktifkan tombol + dan -
+    deleteHandler?: () => void;
 }
 
 const QuantityInput: React.FC<QuantityInputProps> = ({
@@ -14,29 +19,51 @@ const QuantityInput: React.FC<QuantityInputProps> = ({
     add = 1,
     min = 1,
     max = Infinity,
+    disabled = false,
+    deleteHandler,
 }) => {
     const decrease = () => {
-        setState((prev) => Math.max(prev - add, min));
+        if (disabled) return;
+
+        if (state === min && deleteHandler) {
+            deleteHandler();
+        } else if (state > min) {
+            setState((prev) => Math.max(prev - add, min));
+        }
     };
 
     const increase = () => {
-        setState((prev) => Math.min(prev + add, max));
+        if (!disabled) setState((prev) => Math.min(prev + add, max));
     };
+
+    const showTrash = state === min && !!deleteHandler;
 
     return (
         <div
-            className={`flex items-center  w-fit select-none   ${className}`}
+            className={`flex items-center justify-center w-fit select-none ${className} ${disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
         >
             <button
                 onClick={decrease}
-                className="hover:bg-text/20 rounded-l-full h-full text-lg font-semibold aspect-square  transition cursor-pointer"
+                disabled={disabled || (state === min && !deleteHandler)}
+                className={`rounded-l-full h-full text-lg font-semibold aspect-square transition flex justify-center items-center
+        ${disabled || (state === min && !deleteHandler)
+                        ? "opacity-50 cursor-default"
+                        : "hover:bg-text/20 cursor-pointer"
+                    }`}
             >
-                -
+                {showTrash ? <CiTrash /> : "-"}
             </button>
-            <span className="px-4 py-1 text-center w-[40px]">{state}</span>
+
+            <span className="px-4 py-1 flex justify-center w-[40px]">{state}</span>
+
             <button
                 onClick={increase}
-                className="hover:bg-text/20 rounded-r-full h-full text-lg font-semibold aspect-square    transition cursor-pointer"
+                disabled={disabled}
+                className={`rounded-r-full h-full text-lg font-semibold aspect-square transition
+        ${disabled || (state === max)
+                        ? "opacity-50 cursor-default"
+                        : "hover:bg-text/20 cursor-pointer"
+                    }`}
             >
                 +
             </button>

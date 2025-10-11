@@ -9,8 +9,11 @@ https://dribbble.com/shots/26183137-Card-Stack-Scroll-Animation
     [x] state  choose type
     [ ] mobile UI
     
-[ ] LocalStorage Cart 
+[x] Format Data Product 
+
+
+[x] LocalStorage Cart - with dynamic value
 [ ] Page /accessories/product-name
 
-
+[ ] Validasi Id  product pada server untuk menyesuaikan harga
 [ ] Payment Gateway dengan Midtrans
