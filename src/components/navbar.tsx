@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
+import { NAVBAR_PATHS } from "@/config";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -134,28 +135,33 @@ const Navbar = () => {
             </a>
           </li>
 
-          <div className="w-px h-6 border-l mx-2 hidden sm:block"></div>
-          <li className=" hidden sm:flex items-center font-semibold tracking-wide">
-            <a href="/">
-              <HoverText className="bold-text text-base ">Home</HoverText>
-            </a>
-          </li>
-          <li className=" hidden sm:flex items-center font-semibold tracking-wide">
-            <Link href="">
-              <HoverText className="bold-text text-base">Fabric</HoverText>
-            </Link>
-          </li>
-          <li className=" hidden sm:flex items-center font-semibold tracking-wide">
-            <Link href="">
-              <HoverText className="bold-text text-base">Contact</HoverText>
-            </Link>
-          </li>
+          <div className="w-px h-6 border-l mx-2 bg-text hidden sm:block"></div>
+          {NAVBAR_PATHS.map((item) => {
+            const isActive = pathname === item.path;
+
+            return (
+              <li
+                key={item.path}
+                className="hidden sm:flex items-center font-semibold tracking-wide justify-center relative"
+              >
+                <Link href={item.path}>
+                  <HoverText className="bold-text text-base">{item.name}</HoverText>
+                </Link>
+
+                {isActive && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 size-1 rounded-full bg-text transition-all duration-300"></span>
+                )}
+              </li>
+            );
+          })}
         </ul>
         <ul className="flex items-center text-sm gap-4 h-full">
           <li className="block">
-            <button className="bg-text tracking-wide rounded-full text-white text-sm px-6 py-3 flex items-center border-none outline-none focus:outline-none">
-              <HoverText>Bring to Home</HoverText>
-            </button>
+            <Link href="/shop">
+              <button className="bg-text tracking-wide rounded-2xl text-white text-sm px-6 py-3 flex items-center border-none outline-none focus:outline-none">
+                <HoverText>Bring to Home</HoverText>
+              </button>
+            </Link>
           </li>
         </ul>
       </div>
@@ -178,22 +184,20 @@ const Navbar = () => {
               </a>
               <span className="h-2 w-2 rounded-full bg-text opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
             </li>
-            <li className="w-full flex justify-between items-center group">
-              <Link href="/about"
-              onClick={() => setMenuOpen(false)}
-                className="text-6xl text-kaftan" >
-                About
-              </Link>
-              <span className="h-2 w-2 rounded-full bg-text opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-            </li>
-            <li className="w-full flex justify-between items-center group">
-              <Link href="/fabric"
-              onClick={() => setMenuOpen(false)}
-                className="text-6xl text-kaftan" >
-                Fabric
-              </Link>
-              <span className="h-2 w-2 rounded-full bg-text opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-            </li>
+            {NAVBAR_PATHS.map((item) => {
+              const isActive = pathname === item.path;
+
+              return (
+                <li key={"sidebar-" + item.path} className="w-full flex justify-between items-center group">
+                  <Link href={item.path}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-6xl text-kaftan" >
+                    {item.name}
+                  </Link>
+                  <span className={`h-2 w-2 rounded-full bg-text ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}  transition-opacity duration-500`}></span>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="w-full h-px bg-text/70  "></div>
@@ -205,36 +209,32 @@ const Navbar = () => {
                 Home
               </a>
             </li>
-            <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/"
-              onClick={() => setMenuOpen(false)}>
-                About
-              </Link>
-            </li>
-            <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/"
-              onClick={() => setMenuOpen(false)}>
-                Fabric
-              </Link>
-            </li>
-            <li className="cursor-pointer text-sm lg:text-base ">
-              <Link href="/"
-              onClick={() => setMenuOpen(false)}>
-                Product
-              </Link>
-            </li>
+            {NAVBAR_PATHS.map((item) => {
+              const isActive = pathname === item.path;
+
+              return (
+                <li
+                  key={`footer-sidebar-${item.path}`}
+                  className="cursor-pointer text-sm lg:text-base " >
+                  <Link href={item.path}
+                    onClick={() => setMenuOpen(false)}>
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
           <ul className="flex flex-col gap-1">
             <h3 className="font-bold text-lg lg:text-xl ">Follow Us</h3>
             <li className="cursor-pointer text-sm lg:text-base ">
               <Link href="/"
-              onClick={() => setMenuOpen(false)}>
+                onClick={() => setMenuOpen(false)}>
                 Instagram
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
               <Link href="/"
-              onClick={() => setMenuOpen(false)}>
+                onClick={() => setMenuOpen(false)}>
                 Email
               </Link>
             </li>
@@ -243,25 +243,25 @@ const Navbar = () => {
             <h3 className="font-bold text-lg lg:text-xl ">Information</h3>
             <li className="cursor-pointer text-sm lg:text-base ">
               <Link href="/"
-              onClick={() => setMenuOpen(false)}>
+                onClick={() => setMenuOpen(false)}>
                 Terms & Conditions
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
               <Link href="/"
-              onClick={() => setMenuOpen(false)}>
+                onClick={() => setMenuOpen(false)}>
                 Privacy Policy
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
               <Link href="/"
-              onClick={() => setMenuOpen(false)}>
+                onClick={() => setMenuOpen(false)}>
                 How to Order
               </Link>
             </li>
             <li className="cursor-pointer text-sm lg:text-base ">
               <Link href="/"
-              onClick={() => setMenuOpen(false)}>
+                onClick={() => setMenuOpen(false)}>
                 Shipping & Returns
               </Link>
             </li>
@@ -273,7 +273,7 @@ const Navbar = () => {
           <p className="text-sm lg:text-lg ">© {new Date().getFullYear()} Stailore. Beauty in Every Detail.</p>
         </div>
       </motion.div>
-    </motion.nav>
+    </motion.nav >
   );
 };
 
