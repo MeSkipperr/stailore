@@ -51,6 +51,19 @@ export function useLocalStorageState<T extends any[]>(key: string, initialValue:
         localStorage.setItem(key, JSON.stringify(value));
     }, [key, value]);
 
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        localStorage.setItem(key, JSON.stringify(value));
+
+        // 🔄 kirim event global
+        window.dispatchEvent(
+            new CustomEvent("localstorage-update", {
+                detail: { key, value },
+            })
+        );
+    }, [key, value]);
+
+
     // 🔄 Dengarkan event localstorage-update (tab yang sama)
     useEffect(() => {
         const handleLocalChange = (e: CustomEvent) => {

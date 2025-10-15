@@ -40,12 +40,12 @@ const QuantityInput: React.FC<QuantityInputProps> = ({
 
     return (
         <div
-            className={`flex items-center justify-center w-fit select-none ${className} ${disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
+            className={`flex items-center justify-center w-fit select-none  ${className} ${disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
         >
             <button
                 onClick={decrease}
                 disabled={disabled || (state === min && !deleteHandler)}
-                className={`rounded-l-full h-full text-lg font-semibold aspect-square transition flex justify-center items-center
+                className={`rounded-l-2xl h-full text-lg font-semibold aspect-square transition flex justify-center items-center
         ${disabled || (state === min && !deleteHandler)
                         ? "opacity-50 cursor-default"
                         : "hover:bg-text/20 cursor-pointer"
@@ -59,7 +59,7 @@ const QuantityInput: React.FC<QuantityInputProps> = ({
             <button
                 onClick={increase}
                 disabled={disabled}
-                className={`rounded-r-full h-full text-lg font-semibold aspect-square transition
+                className={`rounded-r-2xl h-full text-lg font-semibold aspect-square transition
         ${disabled || (state === max)
                         ? "opacity-50 cursor-default"
                         : "hover:bg-text/20 cursor-pointer"

@@ -1,13 +1,14 @@
 "use client";
 
-import { Currency } from "@/models/cart";
-import ProductCard from "./product";
+import ProductCard from ".";
+import { Skeleton } from "@/components/ui/skeleton"
+import SkeletonList from "./skeleton";
+import { useEffect, useState } from "react";
 
 export type ProductCardProps = {
     id: string;
     category: string,
     name: string;
-    priceIDR: number,
     description: string;
     type: {
         id: string;
@@ -29,7 +30,6 @@ const dummyProducts: ProductCardProps[] = [
         id: "data-1",
         category: "Succulent",
         name: "Echeveria Elegans",
-        priceIDR: 45000,
         description:
             "A beautiful rosette-forming succulent with pastel green leaves. Perfect for indoor decoration.",
         type: [
@@ -41,7 +41,7 @@ const dummyProducts: ProductCardProps[] = [
                 createdAt: new Date("2025-01-05"),
                 updatedAt: new Date("2025-03-10"),
                 isAvailable: true,
-                imageUrl: "/images/echeveria-small.jpg",
+                imageUrl: "https://via.assets.so/img.jpg?w=400&h=400&bg=dbeafe&f=png",
             },
             {
                 id: "t2",
@@ -51,10 +51,10 @@ const dummyProducts: ProductCardProps[] = [
                 createdAt: new Date("2025-01-05"),
                 updatedAt: new Date("2025-03-10"),
                 isAvailable: true,
-                imageUrl: "/images/echeveria-medium.jpg",
+                imageUrl: "https://via.assets.so/img.jpg?w=400&h=400&bg=dcfce7&f=png",
             },
         ],
-        imageUrl: "/images/echeveria-main.jpg",
+        imageUrl: "https://via.assets.so/img.jpg?w=400&h=400&bg=e9d5ff&f=png",
         isAvailable: true,
         createdAt: new Date("2025-01-01"),
         updatedAt: new Date("2025-03-15"),
@@ -63,7 +63,6 @@ const dummyProducts: ProductCardProps[] = [
         id: "data-2",
         category: "Tropical Plant",
         name: "Monstera Deliciosa",
-        priceIDR: 120000,
         description:
             "A tropical plant with iconic split leaves. Great for home or office spaces.",
         type: [
@@ -75,7 +74,7 @@ const dummyProducts: ProductCardProps[] = [
                 createdAt: new Date("2025-02-01"),
                 updatedAt: new Date("2025-03-12"),
                 isAvailable: true,
-                imageUrl: "/images/monstera-small.jpg",
+                imageUrl: "https://via.assets.so/img.jpg?w=400&h=400&gradientFrom=667eea&gradientTo=764ba2&gradientAngle=135&f=png",
             },
             {
                 id: "t4",
@@ -85,10 +84,10 @@ const dummyProducts: ProductCardProps[] = [
                 createdAt: new Date("2025-02-01"),
                 updatedAt: new Date("2025-03-12"),
                 isAvailable: false,
-                imageUrl: "/images/monstera-large.jpg",
+                imageUrl: "https://via.assets.so/img.jpg?w=400&h=400&gradientFrom=22c55e&gradientTo=10b981&gradientAngle=135&f=png",
             },
         ],
-        imageUrl: "/images/monstera-main.jpg",
+        imageUrl: "https://via.assets.so/img.jpg?w=400&h=400&gradientFrom=ff0000&gradientTo=ff7f00&gradientAngle=135&f=png",
         isAvailable: true,
         createdAt: new Date("2025-02-01"),
         updatedAt: new Date("2025-03-15"),
@@ -100,12 +99,39 @@ const dummyProducts: ProductCardProps[] = [
 
 
 export default function ProductGroup() {
-    const currency: Currency = "IDR"
+    const [products, setProducts] = useState<ProductCardProps[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Simulasi fetch data dari API
+        const fetchData = async () => {
+            setLoading(true);
+
+            // simulasi delay 2 detik
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+
+            setProducts(dummyProducts);
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
     return (
-        <div className="w-3/4 flex flex-col justify-center items-center gap-40 mb-36">
-            {dummyProducts.map((product, index) => (
-                <ProductCard key={product.id} {...product} currency={currency} position={index % 2 === 0 ? "left" : "right"} />
-            ))}
+        <div className="w-full lg:w-3/4 flex flex-col justify-center items-center gap-40 mb-36">
+            {loading ? (
+                // tampilkan Skeleton selama data dimuat
+                <SkeletonList count={2} />
+            ) : (
+                // tampilkan data produk setelah "fetch"
+                products.map((product, index) => (
+                    <ProductCard
+                        key={product.id}
+                        {...product}
+                        position={index % 2 === 0 ? "left" : "right"}
+                    />
+                ))
+            )}
         </div>
     );
 }
