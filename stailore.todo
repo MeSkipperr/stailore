@@ -5,7 +5,7 @@ https://chatgpt.com/c/68b804c3-3e20-8325-9e45-8fcc696857c8
 [x] Card Stact for fabric 
 https://dribbble.com/shots/26183137-Card-Stack-Scroll-Animation
 
-[ ] Shop Page
+[X] Shop Page
     [x] state  choose type
     [x] mobile UI
     [x] Image Card
@@ -19,3 +19,4 @@ https://dribbble.com/shots/26183137-Card-Stack-Scroll-Animation
 
 [ ] Validasi Id  product pada server untuk menyesuaikan harga
 [ ] Payment Gateway dengan Midtrans
+[ ] Not Found Page

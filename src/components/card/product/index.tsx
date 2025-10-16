@@ -113,7 +113,9 @@ const ProductCard: React.FC<ProductCardParms> = ({
                         className={`h-full w-1/4 flex items-center justify-center cursor-pointer transition 
                                     ${productImageIndex === 0 ? "opacity-0 cursor-default" : "opacity-100  cursor-pointer"}`}
                     >
-                        <IoIosArrowBack className="size-1/3" />
+                        <div className="w-10 aspect-square bg-text/30 flex justify-center items-center rounded-full ">
+                            <IoIosArrowBack className="size-full text-white py-2 rounded-full" />
+                        </div>
                     </button>
 
                     <button
@@ -122,7 +124,9 @@ const ProductCard: React.FC<ProductCardParms> = ({
                         className={`h-full w-1/4 flex items-center justify-center transition
                                     ${productImageIndex === productImage.length - 1 ? "opacity-0 cursor-default" : "opacity-100  cursor-pointer"}`}
                     >
-                        <IoIosArrowForward className="size-1/3" />
+                        <div className="w-10 aspect-square bg-text/30 flex justify-center items-center rounded-full ">
+                            <IoIosArrowForward className="size-full text-white py-2 rounded-full" />
+                        </div>
                     </button>
 
                     <div
@@ -169,8 +173,8 @@ const ProductCard: React.FC<ProductCardParms> = ({
                                     : "text-base"
                                     }`}
                                 onClick={() => {
-                                setIndexTagSelected(index),
-                                setProductImageIndex(index+1)
+                                    setIndexTagSelected(index),
+                                        setProductImageIndex(index + 1)
                                 }}
                             >
                                 <HoverText>{tag.name}</HoverText>
