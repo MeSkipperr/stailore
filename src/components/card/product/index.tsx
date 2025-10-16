@@ -113,8 +113,8 @@ const ProductCard: React.FC<ProductCardParms> = ({
                         className={`h-full w-1/4 flex items-center justify-center cursor-pointer transition 
                                     ${productImageIndex === 0 ? "opacity-0 cursor-default" : "opacity-100  cursor-pointer"}`}
                     >
-                        <div className="w-10 aspect-square bg-text/30 flex justify-center items-center rounded-full ">
-                            <IoIosArrowBack className="size-full text-white py-2 rounded-full" />
+                        <div className="w-10 aspect-square bg-text/30 hover:bg-text/50 transition flex justify-center items-center rounded-full  ">
+                            <IoIosArrowBack className="size-full text-white py-2 " />
                         </div>
                     </button>
 
@@ -124,8 +124,8 @@ const ProductCard: React.FC<ProductCardParms> = ({
                         className={`h-full w-1/4 flex items-center justify-center transition
                                     ${productImageIndex === productImage.length - 1 ? "opacity-0 cursor-default" : "opacity-100  cursor-pointer"}`}
                     >
-                        <div className="w-10 aspect-square bg-text/30 flex justify-center items-center rounded-full ">
-                            <IoIosArrowForward className="size-full text-white py-2 rounded-full" />
+                        <div className="w-10 aspect-square bg-text/30 hover:bg-text/50 transition flex justify-center items-center rounded-full  ">
+                            <IoIosArrowForward className="size-full text-white py-2 l" />
                         </div>
                     </button>
 
