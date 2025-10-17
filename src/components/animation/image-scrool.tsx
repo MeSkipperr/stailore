@@ -11,8 +11,9 @@ interface ImageScrollProps {
     className?: string;
     src: string;
     alt: string;
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
+    [key: string]: any; 
 }
 
 const ImageScroll = ({
@@ -23,6 +24,7 @@ const ImageScroll = ({
     height,
     scaleRange = [1, 1.05],
     yRange = [0, -100],
+    ...props
 }: ImageScrollProps) => {
     const ref = useRef<HTMLDivElement>(null);
 
@@ -45,6 +47,7 @@ const ImageScroll = ({
                 height={height}
                 src={src}
                 alt={alt}
+                {...props}
                 className="w-full h-full object-cover"
             />
         </motion.div>
