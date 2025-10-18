@@ -10,6 +10,8 @@ interface ImageSlideProps {
     direction: number; // arah animasi (-1 prev, 1 next)
     className?: string;
     title?: string;
+    scaleRange?: [number, number];
+    yRange?: [number, number];
 }
 
 const variants: Variants = {
@@ -40,7 +42,9 @@ const ImageSlide = ({
     index,
     direction,
     className = "w-full h-full",
-    title
+    title,
+    scaleRange = [1, 1.05],
+    yRange = [0, -100],
 }: ImageSlideProps) => {
     return (
         <div className={`relative overflow-hidden  ${className}`}>
@@ -55,6 +59,8 @@ const ImageSlide = ({
                     exit="exit"
                 >
                     <ImageScroll
+                        scaleRange={scaleRange}
+                        yRange={yRange}
                         src={image}
                         alt={`slide-${index}`}
                         fill
@@ -67,7 +73,7 @@ const ImageSlide = ({
                         key={title} // penting agar AnimatePresence bisa deteksi perubahan elemen
                         initial={{ y: 10, opacity: 0, filter: "blur(8px)" }} // posisi awal (dari bawah)
                         animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}   // posisi saat tampil
-                        exit={{ y: 10, opacity: 0 , filter: "blur(8px)"}}    // posisi saat keluar (ke bawah)
+                        exit={{ y: 10, opacity: 0, filter: "blur(8px)" }}    // posisi saat keluar (ke bawah)
                         transition={{ duration: 0.6, ease: "easeInOut" }}
                         className="absolute z-40 bottom-1/4 text-center text-kaftan left-0 right-0 text-5xl"
                     >

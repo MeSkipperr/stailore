@@ -10,7 +10,8 @@ import { useLocalStorageState } from "@/utils/useLocalStorage";
 import { ProductCardProps } from "./product-group";
 import DotIndicator from "@/components/dot-indicator";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import Image from "next/image";
+import ImageSlide from "@/components/animation/image-slide";
+import Link from "next/link";
 
 type ProductCardParms = ProductCardProps & {
     position: "left" | "right"
@@ -30,6 +31,7 @@ const ProductCard: React.FC<ProductCardParms> = ({
     const [indexTagSelected, setIndexTagSelected] = useState(0);
     const [productImageIndex, setProductImageIndex] = useState(0);
     const [quantityInput, setQuantityInput] = useState(1);
+    const [direction, setDirection] = useState(1);
 
     const productImage = [
         imageUrl,
@@ -37,10 +39,12 @@ const ProductCard: React.FC<ProductCardParms> = ({
     ];
 
     const handlePrevImage = () => {
+        setDirection(-1)
         setProductImageIndex((prev) => (prev > 0 ? prev - 1 : prev));
     };
 
     const handleNextImage = () => {
+        setDirection(1)
         setProductImageIndex((prev) =>
             prev < productImage.length - 1 ? prev + 1 : prev
         );
@@ -100,13 +104,14 @@ const ProductCard: React.FC<ProductCardParms> = ({
             <div
                 className="w-full aspect-square lg:w-1/3 h-full bg-accent rounded-2xl bg-cover bg-center relative"
             >
-                <Image
-                    src={productImage[productImageIndex]}
-                    fill
-                    alt=""
-                    className="rounded-2xl"
+                <ImageSlide className="w-full h-full rounded-2xl"
+                    image={productImage[productImageIndex]}
+                    index={productImageIndex}
+                    direction={direction}
+                    yRange={[0, 0]}
+                    scaleRange={[1, 1]}
                 />
-                <div className="absolute inset-0  flex justify-between">
+                <div className="absolute inset-0  flex justify-between z-10">
                     <button
                         onClick={handlePrevImage}
                         disabled={productImageIndex === 0}
@@ -135,8 +140,8 @@ const ProductCard: React.FC<ProductCardParms> = ({
                             count={productImage.length}
                             activeIndex={productImageIndex}
                             className=" w-full  h-10 "
-                            inactiveColor="bg-accent"
-                            activeColor="bg-accent-hover"
+                            inactiveColor="accent"
+                            activeColor="accent-hover"
                         />
                     </div>
                 </div>
@@ -194,7 +199,7 @@ const ProductCard: React.FC<ProductCardParms> = ({
                 </div>
 
                 <div
-                    className={`w-full flex ${!isEven ? "justify-end lg:justify-start " : "justify-end"
+                    className={`w-full flex  ${!isEven ? "justify-between lg:justify-start flex-row-reverse lg:flex-row" : "justify-between lg:justify-start flex-row-reverse"
                         } gap-4`}
                 >
                     <button
@@ -210,7 +215,17 @@ const ProductCard: React.FC<ProductCardParms> = ({
                             </span>
                         </HoverText>
                     </button>
-
+                    <Link href={`/accessories/${name.toLowerCase().replace(/\s+/g, "-")}`}>
+                        <button
+                            className={`cursor-pointer underline text-secondary py-3 lg:px-4 rounded-2xl flex justify-center items-center gap-2 text-sm lg:text-base`}
+                        >
+                            <HoverText>
+                                <span className="underline size-4 lg:size-6">
+                                    Explore This Product
+                                </span>
+                            </HoverText>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

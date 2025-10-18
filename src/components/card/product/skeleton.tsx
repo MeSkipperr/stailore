@@ -50,6 +50,7 @@ export default function SkeletonList({ count }: SkeletonListProps) {
                                     } gap-4`}
                             >
                                 <Skeleton className="w-1/4 h-12 lg:h-16 rounded-2xl" />
+                                <Skeleton className="w-1/4 h-12 lg:h-16 rounded-2xl" />
                             </div>
                         </div>
                     </div>

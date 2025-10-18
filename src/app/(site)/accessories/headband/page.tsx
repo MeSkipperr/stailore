@@ -17,6 +17,8 @@ const Headband = () => {
                     yRange={[100, 0]}
                     alt="headband"
                     className="object-cover w-full h-full"
+                    overlay
+                    overlayClassName="bg-gradient-to-b from-black/40  to-transparent"
                 />
                 <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 text-white">
 
@@ -79,7 +81,7 @@ const Headband = () => {
                 </div>
 
             </div>
-            
+
         </div>
     );
 }

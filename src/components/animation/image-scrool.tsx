@@ -8,12 +8,12 @@ const MotionImage = motion(Image);
 interface ImageScrollProps {
     scaleRange?: [number, number];
     yRange?: [number, number];
+    overlay?: boolean; 
     className?: string;
     src: string;
     alt: string;
     width?: number;
     height?: number;
-    overlay?: boolean; 
     overlayClassName?: string; 
     [key: string]: any;
 }
