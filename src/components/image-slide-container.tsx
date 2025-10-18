@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import ImageSlide from "./animation/image-slide";
 import LoadingBar from "./loading-bar";
-import { splitArrayAutoSize, splitArrayWithWrap } from "@/utils/array";
+import { splitArrayAutoSize } from "@/utils/array";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 // Daftar URL gambar yang akan ditampilkan dalam slider
@@ -178,7 +178,7 @@ const ImageSliderContainer = () => {
                     <button
                         disabled={isDisable}
                         onClick={handlePrev}
-                        className={`bg-text/30 hover:bg-text/50 rounded-full flex items-center justify-center p-4
+                        className={`bg-text/30 hover:bg-text/50 rounded-full flex items-center justify-center p-2
                             ${isDisable ? "cursor-default " : "cursor-pointer"}`}
                     >
                         <IoIosArrowBack className="size-8" />
@@ -189,7 +189,7 @@ const ImageSliderContainer = () => {
                     <button
                         disabled={isDisable}
                         onClick={handleNext}
-                        className={`bg-text/30  hover:bg-text/50 rounded-full flex items-center justify-center p-4
+                        className={`bg-text/30  hover:bg-text/50 rounded-full flex items-center justify-center p-2
                             ${isDisable ? "cursor-default" : "cursor-pointer"}`}
                     >
                         <IoIosArrowForward className="size-8" />

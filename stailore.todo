@@ -17,12 +17,21 @@ https://dribbble.com/shots/26183137-Card-Stack-Scroll-Animation
 [x] LocalStorage Cart - with dynamic value
 [ ] Page /accessories/product-name
     [X] Image Slider
-    [ ] Hair tie Content
+    [X] Hair tie Content
     [ ] Mobile Design
     [ ] Query Fabric
+    
 [ ] Page Transtition 
 
 
 [ ] Validasi Id  product pada server untuk menyesuaikan harga
 [ ] Payment Gateway dengan Midtrans
 [ ] Not Found Page
+
+[ ] Information Page   
+    [ ] Terms & Conditions
+    [ ] Privacy Policy
+    [ ] How to Order
+    [ ] Shipping & Returns
+
+[ ] Footer URL

@@ -42,7 +42,6 @@ const Headband = () => {
                 </div>
                 <p className="w-1/3 text-center text-base">This headband is made to bring a quiet sense of confidence to your day. Its soft texture rests gently, keeping you comfortable while expressing effortless charm. A simple touch that reminds you—beauty feels better when it feels like you.</p>
             </div>
-            <LineLogo />
             <ImageSliderContainer />
             <div className="w-1/3 h-[40dvh] text-base  text-center flex flex-col items-center justify-center ">
                 <p >Soft as a memory, light as a breath — each one carries a quiet kind of comfort.
@@ -80,6 +79,7 @@ const Headband = () => {
                 </div>
 
             </div>
+            
         </div>
     );
 }

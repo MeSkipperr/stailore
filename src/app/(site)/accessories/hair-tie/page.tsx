@@ -17,7 +17,10 @@ const Headband = () => {
                     yRange={[100, 0]}
                     alt="headband"
                     className="object-cover w-full h-full"
+                    overlay
+                    overlayClassName="bg-gradient-to-b from-black/40  to-transparent"
                 />
+
                 <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 text-white">
 
                     {/* Konten */}
@@ -29,20 +32,19 @@ const Headband = () => {
                             alt="Stailore Logo"
                             className="object-contain"
                         />
-                        <h1 className="text-9xl">Headband</h1>
+                        <h1 className="text-9xl">Hair Tie</h1>
                     </div>
                 </div>
             </div>
 
             <div className="w-full h-[80dvh] flex flex-col items-center justify-center space-y-8">
-                <span className="text-base tracking-wider font-bold text-secondary">HEADBAND</span>
+                <span className="text-base tracking-wider font-bold text-secondary">HAIR TIE</span>
                 <div className="text-center">
-                    <h1 className="text-7xl ">Hold your</h1>
-                    <h1 className="text-7xl ">moments in place</h1>
+                    <h1 className="text-7xl ">Hold Softly</h1>
+                    <h1 className="text-7xl ">Stay Strong</h1>
                 </div>
-                <p className="w-1/3 text-center text-base">This headband is made to bring a quiet sense of confidence to your day. Its soft texture rests gently, keeping you comfortable while expressing effortless charm. A simple touch that reminds you—beauty feels better when it feels like you.</p>
+                <p className="w-1/3 text-center text-base">A delicate balance between strength and softness — this hair tie keeps your hair in place while letting your spirit flow free. Because true elegance never tries too hard; it simply feels right.</p>
             </div>
-            <LineLogo />
             <ImageSliderContainer />
             <div className="w-1/3 h-[40dvh] text-base  text-center flex flex-col items-center justify-center ">
                 <p >Soft as a memory, light as a breath — each one carries a quiet kind of comfort.

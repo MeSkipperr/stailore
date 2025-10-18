@@ -13,7 +13,9 @@ interface ImageScrollProps {
     alt: string;
     width?: number;
     height?: number;
-    [key: string]: any; 
+    overlay?: boolean; 
+    overlayClassName?: string; 
+    [key: string]: any;
 }
 
 const ImageScroll = ({
@@ -24,6 +26,8 @@ const ImageScroll = ({
     height,
     scaleRange = [1, 1.05],
     yRange = [0, -100],
+    overlay = false,
+    overlayClassName = "bg-black/20", 
     ...props
 }: ImageScrollProps) => {
     const ref = useRef<HTMLDivElement>(null);
@@ -50,6 +54,12 @@ const ImageScroll = ({
                 {...props}
                 className="w-full h-full object-cover"
             />
+
+            {overlay && (
+                <div
+                    className={`absolute inset-0 pointer-events-none ${overlayClassName}`}
+                />
+            )}
         </motion.div>
     );
 };

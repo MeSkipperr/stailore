@@ -1,5 +1,6 @@
 "use client";
 
+import { NAVBAR_PATHS } from "@/config";
 import Link from "next/link";
 import { useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
@@ -35,25 +36,19 @@ const Footer = () => {
                         <ul className="flex flex-col gap-1">
                             <h3 className="font-bold text-lg lg:text-xl ">Menu</h3>
                             <li className="cursor-pointer text-sm lg:text-base ">
-                                <Link href="/">
+                                <a href="/">
                                     Home
-                                </Link>
+                                </a>
                             </li>
-                            <li className="cursor-pointer text-sm lg:text-base ">
-                                <Link href="/">
-                                    About
-                                </Link>
-                            </li>
-                            <li className="cursor-pointer text-sm lg:text-base ">
-                                <Link href="/">
-                                    Fabric
-                                </Link>
-                            </li>
-                            <li className="cursor-pointer text-sm lg:text-base ">
-                                <Link href="/">
-                                    Product
-                                </Link>
-                            </li>
+                            {NAVBAR_PATHS.map((item,index) => {
+                                return (
+                                    <li key={"Footer-Menu-"+index} className="cursor-pointer text-sm lg:text-base ">
+                                        <Link href={item.path}>
+                                            {item.name}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
                         <ul className="flex flex-col gap-1">
                             <h3 className="font-bold text-lg lg:text-xl ">Follow Us</h3>
