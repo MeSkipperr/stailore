@@ -29,12 +29,12 @@ const Footer = () => {
             <div className="w-full lg:w-3/4 min-h-[50dvh] py-20 flex flex-col items-center justify-center gap-12">
                 <div className="w-full  flex items-center flex-col lg:flex-row gap-8 lg:gap-0">
                     <div className="w-full px-4  lg:w-1/2 h-full flex flex-col justify-start items-start">
-                        <h1 className="text-5xl lg:text-7xl">Every Stitch</h1>
-                        <h1 className="text-5xl lg:text-7xl">Has a Story 🌸</h1>
+                        <h1 className="text-4xl lg:text-7xl">Every Stitch</h1>
+                        <h1 className="text-4xl lg:text-7xl">Has a Story 🌸</h1>
                     </div>
                     <div className="w-full px-4 lg:w-1/2 h-full flex justify-between items-start gap-8">
                         <ul className="flex flex-col gap-1">
-                            <h3 className="font-bold text-lg lg:text-xl ">Menu</h3>
+                            <h3 className="font-bold text-base lg:text-xl ">Menu</h3>
                             <li className="cursor-pointer text-sm lg:text-base ">
                                 <a href="/">
                                     Home
@@ -51,7 +51,7 @@ const Footer = () => {
                             })}
                         </ul>
                         <ul className="flex flex-col gap-1">
-                            <h3 className="font-bold text-lg lg:text-xl ">Follow Us</h3>
+                            <h3 className="font-bold text-base lg:text-xl ">Follow Us</h3>
                             <li className="cursor-pointer text-sm lg:text-base ">
                                 <Link href="/">
                                     Instagram
@@ -90,7 +90,7 @@ const Footer = () => {
                 </div>
                 <div className="w-full px-4 gap-8 lg:gap-0 flex flex-col lg:flex-row lg:justify-between lg:items-end">
                     <div className="w-full  flex flex-col items-start">
-                        <h2 className="text-lg lg:text-2xl mb-4">
+                        <h2 className="text-base lg:text-2xl mb-4">
                             Stay connected—never miss a new collection.
                         </h2>
                         <form onSubmit={handleSubmit} className="w-full flex items-center gap-2">
@@ -115,8 +115,8 @@ const Footer = () => {
                         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                     </div>
                     <div className="w-full flex flex-col items-end">
-                        <p className="text-sm lg:text-lg flex items-center gap-2"><CiLocationOn />Nusa Dua, Bali, Indonesia </p>
-                        <p className="text-sm lg:text-lg ">© {new Date().getFullYear()} Stailore. Beauty in Every Detail.</p>
+                        <p className="text-xs lg:text-lg flex items-center gap-2"><CiLocationOn />Nusa Dua, Bali, Indonesia </p>
+                        <p className="text-xs lg:text-lg ">© {new Date().getFullYear()} Stailore. Beauty in Every Detail.</p>
                     </div>
 
                 </div>

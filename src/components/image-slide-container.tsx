@@ -155,24 +155,27 @@ const ImageSliderContainer = () => {
 
     return (
         <div className="w-full flex flex-col items-center gap-2">
-            <div className="w-full h-[80dvh] flex justify-around items-start relative gap-12">
-                <ImageSlide className="w-full h-[90%] "
+            <div className="w-full lg:h-[80dvh] flex flex-col lg:flex-row justify-around items-start relative  lg:gap-12 px-4 lg:px-0">
+                <ImageSlide className="w-full aspect-[4/3] lg:aspect-auto lg:h-[90%]  "
                     image={imageShortGroup?.[0]?.[index].imageUrl ?? "/fallback.jpg"}
                     index={index}
                     direction={direction}
                     title={imageShortGroup?.[0]?.[index].name ?? "Lorem, ipsum."}
+                    yRange= {[0, -50]}
                 />
-                <ImageSlide className="w-full h-[90%] self-end"
+                <ImageSlide className="w-full aspect-[4/3] lg:aspect-auto lg:h-[90%]  self-end"
                     image={imageShortGroup?.[1]?.[index].imageUrl ?? "/fallback.jpg"}
                     index={index}
                     direction={direction}
                     title={imageShortGroup?.[1]?.[index].name ?? "Lorem, ipsum."}
+                    yRange= {[0, -50]}
                 />
-                <ImageSlide className="w-full h-[90%] "
+                <ImageSlide className="w-full aspect-[4/3] lg:aspect-auto lg:h-[90%]  "
                     image={imageShortGroup?.[2]?.[index].imageUrl ?? "/fallback.jpg"}
                     index={index}
                     direction={direction}
                     title={imageShortGroup?.[2]?.[index].name ?? "Lorem, ipsum."}
+                    yRange= {[0, -50]}
                 />
                 <div className="absolute left-0 w-30 top-0 bottom-0  z-40  flex items-center justify-center">
                     <button
@@ -197,7 +200,7 @@ const ImageSliderContainer = () => {
                 </div>
             </div>
             <div className="w-full flex items-center justify-center flex-col">
-                <div className="w-1/3 flex justify-center items-center gap-2">
+                <div className="w-3/4 lg:w-1/3 flex justify-center items-center gap-2">
                     {[...Array(imageShortGroup[0].length)].map((_, i) => (
                         <LoadingBar
                             key={i} // ✅ penting untuk mencegah warning React

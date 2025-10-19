@@ -14,7 +14,7 @@ const ShopPage = () => {
     return (
         <Reveal duration={1.5} once delay={0.5} className="w-full  min-h-dvh flex flex-col items-center px-4">
             <Cart />
-            <div className=" w-full lg:w-3/4 gap-2 h-[70dvh]  lg:h-[50dvh]   flex flex-col justify-end items-start sticky ">
+            <div className=" w-full lg:w-3/4 gap-2 h-[50dvh]   flex flex-col justify-end items-start sticky ">
                 <h1 className="text-5xl sm:text-7xl">Crafted for</h1>
                 <h1 className="text-5xl sm:text-7xl">every occasion. </h1>
                 <p className="text-base lg:text-xl  lg:w-3/4">Each piece is more than fabric — it’s a reflection of your moments, your confidence, and your story. Feel the elegance tailored to accompany you, wherever life takes you.</p>

@@ -75,7 +75,7 @@ const ImageSlide = ({
                         animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}   // posisi saat tampil
                         exit={{ y: 10, opacity: 0, filter: "blur(8px)" }}    // posisi saat keluar (ke bawah)
                         transition={{ duration: 0.6, ease: "easeInOut" }}
-                        className="absolute z-40 bottom-1/4 text-center text-kaftan left-0 right-0 text-5xl"
+                        className="absolute z-40 bottom-1/4 text-center text-kaftan left-0 right-0 text-3xl lg:text-5xl"
                     >
                         {title}
                     </motion.h2>

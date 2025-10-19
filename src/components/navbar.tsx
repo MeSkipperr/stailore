@@ -6,11 +6,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
-import { NAVBAR_PATHS } from "@/config";
+import { NAVBAR_PATHS, NAVBAR_TRANSPARENT_PATHS } from "@/config";
+import matchPath from "@/utils/path/matchPath";
+import CallToAction from "./shared/call-to-action";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isTransparent, setIsTransparent] = useState(true);
+
+  const isTransparentPage = matchPath(pathname, NAVBAR_TRANSPARENT_PATHS);
 
   useEffect(() => {
     if (pathname === "/") {
@@ -57,6 +62,26 @@ const Navbar = () => {
     }
   }, [pathname]);
 
+  useEffect(() => {
+    if (!isTransparentPage) {
+      setIsTransparent(false);
+      return;
+    }
+
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setIsTransparent(true);
+      } else {
+        setIsTransparent(false);
+      }
+    };
+
+    handleScroll(); // set state saat pertama render
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isTransparentPage]);
+
   // disable scroll saat mobile menu terbuka
   // useEffect(() => {
   //   if (menuOpen) {
@@ -84,8 +109,15 @@ const Navbar = () => {
         duration: 0.5,
       }}
       className="w-full h-dvh flex flex-col fixed top-0 bottom-0 left-0 right-0 z-[100] pointer-events-none">
-      <div
-        className="w-full bg-primary flex justify-between items-center py-2 px-4 lg:px-8 pointer-events-auto"
+      <motion.div
+        className={`w-full bg-primary  flex justify-between items-center py-2 px-4 lg:px-8 pointer-events-auto`}
+        animate={{
+          y: isTransparent ?"-100%" : 0,
+        }}
+        transition={{
+          duration: 0.4,
+          ease: "easeInOut",
+        }}
       >
         <ul className="flex items-center  text-sm gap-4 h-full cursor-pointer">
           <li className="sm:hidden">
@@ -157,14 +189,10 @@ const Navbar = () => {
         </ul>
         <ul className="flex items-center text-sm gap-4 h-full">
           <li className="block">
-            <Link href="/shop">
-              <button className="bg-text tracking-wide rounded-2xl text-white text-sm px-6 py-3 flex items-center border-none outline-none focus:outline-none">
-                <HoverText>Bring to Home</HoverText>
-              </button>
-            </Link>
+            <CallToAction/>
           </li>
         </ul>
-      </div>
+      </motion.div>
 
       <motion.div
         initial={{ x: "-100%" }}

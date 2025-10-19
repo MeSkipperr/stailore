@@ -17,3 +17,7 @@ export const NAVBAR_PATHS = [
         path: "/contact",
     },
 ]
+
+export const NAVBAR_TRANSPARENT_PATHS = [
+    "/accessories/*",
+];
