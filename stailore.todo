@@ -13,6 +13,18 @@ https://dribbble.com/shots/26183137-Card-Stack-Scroll-Animation
     
 [x] Format Data Product 
 
+[ ] UI & UX REFACTOR
+    [ ] Text Sizing
+        title       : 7xl   = 72px  | 4xl
+        subtitle    : 2xl   = 24px  | xl
+        paragraft   : lg    = 18px  | base
+        small       : base  = 16px  | sm
+    [ ] Spacing
+        2-6-8-12-16-20 px
+    [ ] Text Tracking
+        normal - wider 
+    [ ] UX Button Varriant Hover, Onclick, Disable
+
 
 [x] LocalStorage Cart - with dynamic value
 [ ] Page /accessories/product-name

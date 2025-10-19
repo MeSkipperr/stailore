@@ -100,6 +100,7 @@ const Navbar = () => {
     return 0.5;
   };
 
+
   return (
     <motion.nav
       initial={{ opacity: 0 }}
@@ -112,14 +113,14 @@ const Navbar = () => {
       <motion.div
         className={`w-full bg-primary  flex justify-between items-center py-2 px-4 lg:px-8 pointer-events-auto`}
         animate={{
-          y: isTransparent ?"-100%" : 0,
+          y: isTransparent ? "-100%" : 0,
         }}
         transition={{
           duration: 0.4,
           ease: "easeInOut",
         }}
       >
-        <ul className="flex items-center  text-sm gap-4 h-full cursor-pointer">
+        <ul className="flex items-center  text-sm  -4 h-full cursor-pointer space-x-4">
           <li className="sm:hidden">
             <button
               className="relative w-8 h-6 flex flex-col justify-between items-center cursor-pointer bg-primary "
@@ -167,7 +168,7 @@ const Navbar = () => {
             </a>
           </li>
 
-          <div className="w-px h-6 border-l mx-2 bg-text hidden sm:block"></div>
+          <div className="w-px h-6 border-l  border-text bg-text hidden sm:block"></div>
           {NAVBAR_PATHS.map((item) => {
             const isActive = pathname === item.path;
 
@@ -177,7 +178,7 @@ const Navbar = () => {
                 className="hidden sm:flex items-center font-semibold tracking-wide justify-center relative"
               >
                 <Link href={item.path}>
-                  <HoverText className="bold-text text-base">{item.name}</HoverText>
+                  <HoverText className=" text-base tracking-wider ">{item.name}</HoverText>
                 </Link>
 
                 {isActive && (
@@ -187,9 +188,9 @@ const Navbar = () => {
             );
           })}
         </ul>
-        <ul className="flex items-center text-sm gap-4 h-full">
+        <ul className="flex items-center text-sm  -4 h-full">
           <li className="block">
-            <CallToAction/>
+            <CallToAction />
           </li>
         </ul>
       </motion.div>
@@ -198,19 +199,19 @@ const Navbar = () => {
         initial={{ x: "-100%" }}
         animate={{ x: menuOpen ? "0%" : "-100%" }}
         transition={{ duration: 1, ease: [0.624, 0.019, 0.039, 0.906] }}
-        className="px-8 w-full h-full bg-primary pointer-events-auto flex  flex-col justify-between "
+        className="px-4 w-full h-full bg-primary pointer-events-auto flex  flex-col justify-between "
       >
         <div className=" flex flex-col justify-start items-center text-second text-xl ">
-          <ul className="w-full flex flex-col justify-center items-start gap-4">
-            <span className="text-lg text-text/75">Menu</span>
+          <ul className="w-full flex flex-col justify-center items-start  space-y-2">
+            <span className="text-lg text-text/50 font-semibold">MENU</span>
             <li className="w-full flex justify-between items-center group">
               <a
                 href="/"
-                className="text-6xl text-kaftan"
+                className="text-5xl text-kaftan"
               >
                 Home
               </a>
-              <span className="h-2 w-2 rounded-full bg-text opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+              <span className={`h-2 w-2 rounded-full bg-text ${pathname === "/" ? "opacity-100" : "opacity-0 group-hover:opacity-100"}  transition-opacity duration-500`}></span>
             </li>
             {NAVBAR_PATHS.map((item) => {
               const isActive = pathname === item.path;
@@ -219,7 +220,7 @@ const Navbar = () => {
                 <li key={"sidebar-" + item.path} className="w-full flex justify-between items-center group">
                   <Link href={item.path}
                     onClick={() => setMenuOpen(false)}
-                    className="text-6xl text-kaftan" >
+                    className="text-5xl text-kaftan" >
                     {item.name}
                   </Link>
                   <span className={`h-2 w-2 rounded-full bg-text ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}  transition-opacity duration-500`}></span>
@@ -229,17 +230,15 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="w-full h-px bg-text/70  "></div>
-        <div className="w-full flex justify-between items-start gap-8">
-          <ul className="flex flex-col gap-1">
-            <h3 className="font-bold text-lg lg:text-xl ">Menu</h3>
+        <div className="w-full flex justify-between items-start  -8">
+          <ul className="flex flex-col  -1">
+            <h3 className="font-bold text-base lg:text-lg pb-2">Menu</h3>
             <li className="cursor-pointer text-sm lg:text-base ">
               <a href="/">
                 Home
               </a>
             </li>
             {NAVBAR_PATHS.map((item) => {
-              const isActive = pathname === item.path;
-
               return (
                 <li
                   key={`footer-sidebar-${item.path}`}
@@ -252,8 +251,8 @@ const Navbar = () => {
               );
             })}
           </ul>
-          <ul className="flex flex-col gap-1">
-            <h3 className="font-bold text-lg lg:text-xl ">Follow Us</h3>
+          <ul className="flex flex-col  -1">
+            <h3 className="font-bold text-base lg:text-lg  pb-2">Follow Us</h3>
             <li className="cursor-pointer text-sm lg:text-base ">
               <Link href="/"
                 onClick={() => setMenuOpen(false)}>
@@ -267,8 +266,8 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <ul className="flex flex-col gap-1">
-            <h3 className="font-bold text-lg lg:text-xl ">Information</h3>
+          <ul className="flex flex-col  -1">
+            <h3 className="font-bold text-base lg:text-lg l pb-2">Information</h3>
             <li className="cursor-pointer text-sm lg:text-base ">
               <Link href="/"
                 onClick={() => setMenuOpen(false)}>
@@ -297,8 +296,8 @@ const Navbar = () => {
         </div>
         <div className="w-full h-px bg-text/70  "></div>
         <div className="w-full flex flex-col items-end mb-12">
-          <p className="text-sm lg:text-lg flex items-center gap-2"><CiLocationOn />Nusa Dua, Bali, Indonesia </p>
-          <p className="text-sm lg:text-lg ">© {new Date().getFullYear()} Stailore. Beauty in Every Detail.</p>
+          <p className="text-sm lg:text-base flex items-center  -2"><CiLocationOn />Nusa Dua, Bali, Indonesia </p>
+          <p className="text-sm lg:text-base ">© {new Date().getFullYear()} Stailore. Beauty in Every Detail.</p>
         </div>
       </motion.div>
     </motion.nav >

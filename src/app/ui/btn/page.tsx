@@ -3,11 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 
-export default function GalleryPage() {
+export default function ButtonPage() {
     return (
         <div className="w-full min-h-screen flex flex-col flex-wrap gap-4 justify-center items-center p-8">
             <div className="w-full flex gap-8 items-center justify-center">
-                <Button transition={false} variant="default" size="sm" >
+                <Button transition={false} variant="default" size="sm"  >
                     Explore Gallery
                 </Button>
                 <Button transition={false} variant="default" >

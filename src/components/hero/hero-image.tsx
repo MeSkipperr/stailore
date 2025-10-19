@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform, } from "framer-motion";
 import Image from "next/image";
 import HoverText from "../hover-text";
+import Link from "next/link";
 const MotionImage = motion(Image);
 
 const HeroImage = () => {
@@ -20,14 +21,14 @@ const HeroImage = () => {
             <div className="w-[95%] sm:w-[90%] rounded-2xl h-full flex justify-center items-start relative overflow-hidden">
                 <div className="w-full h-full inset-0 z-10 flex justify-center items-center ">
                     <div className="w-full h-2/4  flex justify-center items-end">
-                        <motion.button
-                            style={{ y: y1 }}
-                            initial={{ opacity: 0, pointerEvents: "none" }} 
-                            animate={{ opacity: 1, pointerEvents: "auto" }}
-                            transition={{ delay: 4, duration: 1 }}
-                            className="bg-secondary rounded-full text-white text-sm px-6 py-3 flex items-center">
-                            <HoverText>Explore More</HoverText>
-                        </motion.button>
+                        <Link href="/accessories">
+                            <motion.button
+                                style={{ y: y1 }}
+                                transition={{ delay: 4, duration: 1 }}
+                                className="bg-secondary text-white hover:bg-secondary/90 rounded-full text-sm h-10  px-6 has-[>svg]:px-4 flex items-center cursor-pointer">
+                                <HoverText className="text-white">Explore More</HoverText>
+                            </motion.button>
+                        </Link>
                     </div>
                 </div>
                 <MotionImage
@@ -63,7 +64,7 @@ const HeroImage = () => {
                     }}
                 />
             </div>
-        </motion.div>
+        </motion.div >
     );
 }
 

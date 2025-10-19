@@ -90,7 +90,7 @@ const Footer = () => {
                 </div>
                 <div className="w-full px-4 gap-8 lg:gap-0 flex flex-col lg:flex-row lg:justify-between lg:items-end">
                     <div className="w-full  flex flex-col items-start">
-                        <h2 className="text-base lg:text-2xl mb-4">
+                        <h2 className="text-base lg:text-xl mb-4">
                             Stay connected—never miss a new collection.
                         </h2>
                         <form onSubmit={handleSubmit} className="w-full flex items-center gap-2">
@@ -115,8 +115,8 @@ const Footer = () => {
                         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                     </div>
                     <div className="w-full flex flex-col items-end">
-                        <p className="text-xs lg:text-lg flex items-center gap-2"><CiLocationOn />Nusa Dua, Bali, Indonesia </p>
-                        <p className="text-xs lg:text-lg ">© {new Date().getFullYear()} Stailore. Beauty in Every Detail.</p>
+                        <p className="text-xs lg:text-base flex items-center gap-2"><CiLocationOn />Nusa Dua, Bali, Indonesia </p>
+                        <p className="text-xs lg:text-base ">© {new Date().getFullYear()} Stailore. Beauty in Every Detail.</p>
                     </div>
 
                 </div>
